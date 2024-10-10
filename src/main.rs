@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 
 #[derive(Parser, Debug)]
@@ -30,7 +30,22 @@ fn flatten_directory(root: &PathBuf) {
         .filter_map(|e| e.ok())
         .filter(|e| e.file_type().is_file())
         .for_each(|f| {
-            let dest = root.join(f.file_name());
+            let mut dest = root.join(f.file_name());
+            // handle duplicated names
+            if dest.exists() {
+                let mut c = 0usize;
+                loop {
+                    let p = Path::new(f.file_name());
+                    let filename = p.file_stem().unwrap().to_str().unwrap();
+                    let ext = p.extension().unwrap().to_str().unwrap();
+                    dest = root.join(format!("{filename}_{c}.{ext}"));
+                    if !dest.exists() {
+                        break;
+                    }
+                    c += 1;
+                }
+            }
+
             if let Err(err) = fs::rename(f.path(), dest) {
                 eprintln!("Error moving file: {}", err);
             }
