@@ -1,7 +1,13 @@
 [package]
 name = "flatten-directory"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
+license = "MIT"
+homepage = "https://github.com/hoshiyuki-tamako/flatten-directory-rs"
+repository = "https://github.com/hoshiyuki-tamako/flatten-directory-rs"
+keywords = ["file", "split", "directory"]
+categories = ["command-line-utilities", "filesystem"]
+readme = "readme.md"
 
 [dependencies]
 anyhow = "1.0.89"
@@ -21,3 +27,6 @@ enum_glob_use = "deny"
 pedantic = "deny"
 nursery = "deny"
 unwrap_used = "deny"
+
+[dev-dependencies]
+fake = "2.10.0"
