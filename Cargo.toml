@@ -1,11 +1,12 @@
 [package]
 name = "flatten-directory"
+description = "move all files from sub-directories to target directory, then remove all directories recursively"
 version = "1.0.0"
 edition = "2021"
 license = "MIT"
 homepage = "https://github.com/hoshiyuki-tamako/flatten-directory-rs"
 repository = "https://github.com/hoshiyuki-tamako/flatten-directory-rs"
-keywords = ["file", "split", "directory"]
+keywords = ["flatten", "directory"]
 categories = ["command-line-utilities", "filesystem"]
 readme = "readme.md"
 

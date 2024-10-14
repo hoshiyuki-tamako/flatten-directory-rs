@@ -1,8 +1,8 @@
 # Flatten directory
 
-move all files from sub-folders to root
+1. move all files from sub-folders to target directory
 
-then remove all directories recursively
+2. then remove all directories recursively
 
 ## Install
 
